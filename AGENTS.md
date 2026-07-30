@@ -1,6 +1,7 @@
 # AGENTS
 
 <!-- verasic-governance:start -->
+
 ## GitHub agent harness
 
 - Load `GH_TOKEN` before any `gh` mutation: `source .cursor/skills/verasic-github-cli-init/scripts/load-gh-env.sh` (or `.agents/skills/` equivalent).
@@ -16,6 +17,7 @@ Soft enforcement (hooks + CI culture + doctor) is the default on private Free pl
 Required CI status check name: **`ci`**.
 
 Full spec: install **verasic-github-governance** from [verasic-skills](https://github.com/Milkywayrules/verasic-skills) (`skills/verasic-github-governance/SKILL.md`).
+
 <!-- verasic-governance:end -->
 
 ## Git branch workflow (all agents)
@@ -26,3 +28,16 @@ Full spec: install **verasic-github-governance** from [verasic-skills](https://g
 - Lefthook **blocks** default-branch commits and pushes (not just warns)
 - Cursor rule: `.cursor/rules/git-branch-workflow.mdc` (`alwaysApply: true`)
 - Break-glass only when the user explicitly requests: `VERASIC_GOVERNANCE_BYPASS=1`
+
+## Rules are non-negotiable
+
+Follow every rule, skill, protocol, and direction in this repo. No exceptions, no
+"just this once" — if a rule blocks you, fix the work, not the rule.
+
+## Long-term bar
+
+Every change must be:
+
+- **Production-ready** — shippable as-is, not a placeholder or a follow-up promise
+- **Industry-grade** — meets the standard a professional team would accept in review
+- **Durable** — holds up as the codebase, dependencies, and requirements change
