@@ -1,0 +1,46 @@
+schema_version: "1.0"
+research_slug: padel-domain-enhancement-opportunities
+generated_at: "2026-07-30T11:05:00Z"
+source_boundary: public-extended
+domain_primary: generic
+domain_secondary: [health-fitness]
+
+sources:
+  - id: S1
+    url: https://simplepadel.com/how-to-play-an-americano-in-padel/
+    title: "Padel Americano guide"
+    tier: T2
+    fetch_status: verified
+    verified_at: "2026-07-30T11:05:00Z"
+    excerpt: "every rally is worth one point… commonly 24 or 32"
+    accessed_date: "2026-07-30"
+    claim_ids: [C1, C2]
+
+  - id: S3
+    url: https://padelfast.com/blog/what-is-the-difference-between-padel-americano-mexicano
+    title: "Americano vs Mexicano"
+    tier: T2
+    fetch_status: verified
+    verified_at: "2026-07-30T11:05:00Z"
+    excerpt: "pairings determined based on current leaderboard"
+    accessed_date: "2026-07-30"
+    claim_ids: [C3]
+
+claims:
+  - id: C1
+    text: "Americano uses point-per-rally cumulative individual scoring with rotating partners."
+    source_ids: [S1]
+    confidence: { headline: 80, SQ: 72, EC: 78, CG: 85, CO: 75, VR: 78 }
+    verify_status: verified
+
+  - id: C2
+    text: "Manual Americano scheduling is painful above 8 players; apps automate rotation."
+    source_ids: [S1]
+    confidence: { headline: 78, SQ: 72, EC: 75, CG: 82, CO: 70, VR: 78 }
+    verify_status: verified
+
+  - id: C3
+    text: "Mexicano re-pairs players by live leaderboard after each round."
+    source_ids: [S3]
+    confidence: { headline: 82, SQ: 72, EC: 80, CG: 88, CO: 72, VR: 80 }
+    verify_status: verified

@@ -1,0 +1,72 @@
+schema_version: "1.0"
+research_slug: padel-competitor-pain-points-usp
+generated_at: "2026-07-30T11:00:00Z"
+source_boundary: public-extended
+domain_primary: market-competitive
+domain_secondary: []
+
+sources:
+  - id: S1
+    url: https://actu-padel.com/en/playtomic-and-its-ranking-a-real-reference-for-your-matches-or-a-reliability-to-be-relativized/
+    title: "Playtomic ranking reliability analysis"
+    tier: T2
+    fetch_status: verified
+    verified_at: "2026-07-30T11:00:00Z"
+    excerpt: "wanting to play isn't enough… avoid endless WhatsApp exchanges"
+    accessed_date: "2026-07-30"
+    claim_ids: [C1]
+
+  - id: S2
+    url: https://properpadel.uk/2025/09/12/is-playtomics-rating-system-flawed/
+    title: "Is Playtomic's rating system flawed?"
+    tier: T2
+    fetch_status: verified
+    verified_at: "2026-07-30T11:00:00Z"
+    excerpt: "questionnaire leads to inaccurate ratings from the start"
+    accessed_date: "2026-07-30"
+    claim_ids: [C2]
+
+  - id: S3
+    url: https://play.google.com/store/apps/details?id=com.playtomic
+    title: "Playtomic Google Play reviews"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T11:00:00Z"
+    excerpt: "open match fees… charged anyway when nobody joins"
+    accessed_date: "2026-07-30"
+    claim_ids: [C3]
+
+  - id: S8
+    url: https://padelmixer.app/
+    title: "Padel Mixer"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T11:00:00Z"
+    excerpt: "Organize padel events without the chat chaos"
+    accessed_date: "2026-07-30"
+    claim_ids: [C4]
+
+claims:
+  - id: C1
+    text: "Playtomic reduces WhatsApp coordination friction for finding court, time, and players."
+    source_ids: [S1]
+    confidence: { headline: 75, SQ: 70, EC: 72, CG: 80, CO: 70, VR: 75 }
+    verify_status: verified
+
+  - id: C2
+    text: "Users distrust Playtomic rating accuracy due to questionnaire seed and friend-group reliability inflation."
+    source_ids: [S2]
+    confidence: { headline: 72, SQ: 70, EC: 68, CG: 78, CO: 65, VR: 72 }
+    verify_status: verified
+
+  - id: C3
+    text: "Open-match booking can charge users when matches fail to fill."
+    source_ids: [S3]
+    confidence: { headline: 65, SQ: 85, EC: 55, CG: 70, CO: 60, VR: 70 }
+    verify_status: verified
+
+  - id: C4
+    text: "Padel Mixer's USP is replacing WhatsApp for padel event organization."
+    source_ids: [S8]
+    confidence: { headline: 88, SQ: 90, EC: 75, CG: 92, CO: 70, VR: 90 }
+    verify_status: verified

@@ -1,0 +1,484 @@
+schema_version: "1.0"
+research_slug: padel-competitors-landscape
+generated_at: "2026-07-30T10:30:00Z"
+source_boundary: public-extended
+domain_primary: market-competitive
+domain_secondary: []
+
+sources:
+  - id: S1
+    url: https://playtomic.com/
+    title: "Playtomic — Join the community and book courts online"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:05:00Z"
+    excerpt: "Playtomic is the world's leading App for racket sport players and clubs."
+    excerpt_word_count: 12
+    author: "Playtomic S.L."
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, global]
+    contradicts: [S2]
+    notes: "Homepage Forbes quote (4M/5500/52) is stale vs newer press"
+    claim_ids: [C1, C2, C3]
+
+  - id: S2
+    url: https://play.google.com/store/apps/details?id=com.playtomic
+    title: "Playtomic — Google Play listing"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:06:00Z"
+    excerpt: "community of over 1 million players… over 18,000 courts worldwide"
+    excerpt_word_count: 11
+    author: "PLAYTOMIC SL."
+    published_date: "2026-07-24"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive]
+    contradicts: [S1]
+    notes: "Scale metrics differ from homepage Forbes syndication"
+    claim_ids: [C1, C4]
+
+  - id: S3
+    url: https://www.matchi.se/
+    title: "MATCHi — Search, book, play"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:07:00Z"
+    excerpt: "complete booking system for racket sports venues world wide… Matched with players at the same level"
+    excerpt_word_count: 16
+    author: "MATCHi"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, nordics]
+    contradicts: []
+    notes: "Live venue counters render as 0 in static fetch — JS-rendered"
+    claim_ids: [C5, C6]
+
+  - id: S4
+    url: https://www.courtside.id/
+    title: "Courtside — Indonesia padel-only app"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:08:00Z"
+    excerpt: "Indonesia's padel-only app… 300,000+ PADEL PLAYERS… 400+ PADEL CLUBS"
+    excerpt_word_count: 12
+    author: "Courtside Indonesia"
+    published_date: "2025"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, southeast-asia]
+    contradicts: []
+    notes: "Marketing metrics; Play Store download count lower"
+    claim_ids: [C7, C8]
+
+  - id: S5
+    url: https://playpadlr.app/
+    title: "PADLR. — Your Rating. Your Game. Your Community."
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:09:00Z"
+    excerpt: "Launching Spring 2026 on iOS… Bayesian-powered skill rating on a 0–7 scale"
+    excerpt_word_count: 12
+    author: "PADLR."
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, rating-social]
+    contradicts: []
+    notes: "Pre-launch waitlist — not GA competitor yet"
+    claim_ids: [C9]
+
+  - id: S6
+    url: https://padel1.app/
+    title: "Padel One — Everything about your Padel in one app"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:10:00Z"
+    excerpt: "Padel One uses an ELO system to calculate your level from 0.5 to 7.0"
+    excerpt_word_count: 14
+    author: "Padel One"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive]
+    contradicts: []
+    notes: "Club-network platform; Spanish-first marketing"
+    claim_ids: [C10, C11]
+
+  - id: S7
+    url: https://padelrank.app/
+    title: "PadelRank — Verified Padel Ranking"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:11:00Z"
+    excerpt: "TrueSkill-based system, not self-reported levels… 0 to 25 scale"
+    excerpt_word_count: 10
+    author: "PadelRank"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, rating-social]
+    contradicts: []
+    notes: "Live counter showed 271 players at fetch time"
+    claim_ids: [C12, C13]
+
+  - id: S8
+    url: https://www.aceplay.app/
+    title: "Ace — Find Players, Organize Matches"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:12:00Z"
+    excerpt: "Organize matches in seconds… invite your crew or meet new players"
+    excerpt_word_count: 11
+    author: "Ace"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, mvp1-analog]
+    contradicts: []
+    notes: "Closest public thesis to paadel.app MVP1 loop"
+    claim_ids: [C14]
+
+  - id: S9
+    url: https://play.google.com/store/apps/details?id=com.padelmates
+    title: "Padel Mates — Google Play listing"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:13:00Z"
+    excerpt: "Get smart matching suggestions based on your skill level and favorite centers"
+    excerpt_word_count: 11
+    author: "Padel Mates International AB"
+    published_date: "2026-06-03"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, nordics]
+    contradicts: []
+    notes: "100K+ downloads; multi-sport booking platform"
+    claim_ids: [C15, C16]
+
+  - id: S10
+    url: https://racketpal.app/
+    title: "RacketPal — Find local racket sports players"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:14:00Z"
+    excerpt: "Set up a match for singles, doubles, or social"
+    excerpt_word_count: 9
+    author: "RacketPal / Sportega"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, uk]
+    contradicts: []
+    notes: "UK-first; court discovery not in-app booking emphasized"
+    claim_ids: [C17]
+
+  - id: S11
+    url: https://padelmixer.app/
+    title: "Padel Mixer — Organize Padel Events"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:15:00Z"
+    excerpt: "Share a link or invite contacts directly… waitlist… host approve"
+    excerpt_word_count: 10
+    author: "Padel Mixer"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, invite-ux]
+    contradicts: []
+    notes: "Event/mixer format; strong invite UX reference"
+    claim_ids: [C18]
+
+  - id: S12
+    url: https://play.google.com/store/apps/details?id=com.padler.id.padler
+    title: "Padler — Padel Player (Indonesia)"
+    tier: T0
+    fetch_status: snippet-only
+    verified_at: "2026-07-30T10:16:00Z"
+    excerpt: "first platform in Indonesia built exclusively for padel players"
+    excerpt_word_count: 9
+    author: "PT. DEWAN PADEL RAKYAT"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, southeast-asia]
+    contradicts: [C4]
+    notes: "snippet-only; early download count on store"
+    claim_ids: [C19]
+
+  - id: S13
+    url: https://www.playskan.com/insights/booking-platforms
+    title: "Playskan — UK booking platform market share"
+    tier: T2
+    fetch_status: verified
+    verified_at: "2026-07-30T10:17:00Z"
+    excerpt: "Playtomic dominates with 73% market share"
+    excerpt_word_count: 7
+    author: "Playskan"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, uk]
+    contradicts: []
+    notes: "Club inventory share, not player single-app workflow"
+    claim_ids: [C20]
+
+  - id: S14
+    url: https://www.getopencourt.com/solutions/padel/
+    title: "OpenCourt — Padel club solution"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T10:18:00Z"
+    excerpt: "Open games, smart matchmaking for doubles, and group chats"
+    excerpt_word_count: 8
+    author: "OpenCourt"
+    published_date: "2026"
+    accessed_date: "2026-07-30"
+    domain_tags: [market-competitive, b2b]
+    contradicts: []
+    notes: "B2B white-label club OS — hybrid competitor"
+    claim_ids: [C21]
+
+claims:
+  - id: C1
+    text: "Playtomic positions as the world's leading racket-sport app for players and clubs."
+    source_ids: [S1]
+    confidence:
+      headline: 82
+      SQ: 90
+      EC: 75
+      CG: 88
+      CO: 70
+      VR: 85
+    verify_status: verified
+
+  - id: C2
+    text: "Playtomic offers court booking, player connection, leveling system, and match stats."
+    source_ids: [S1, S2]
+    confidence:
+      headline: 85
+      SQ: 90
+      EC: 80
+      CG: 90
+      CO: 75
+      VR: 88
+    verify_status: verified
+
+  - id: C3
+    text: "Playtomic homepage syndicates stale Forbes stats (4M players, 5500 clubs, 52 countries)."
+    source_ids: [S1]
+    confidence:
+      headline: 78
+      SQ: 85
+      EC: 70
+      CG: 85
+      CO: 65
+      VR: 80
+    verify_status: verified
+
+  - id: C4
+    text: "Playtomic Google Play cites 1M+ players and 18,000+ courts worldwide."
+    source_ids: [S2]
+    confidence:
+      headline: 80
+      SQ: 88
+      EC: 65
+      CG: 85
+      CO: 70
+      VR: 85
+    verify_status: verified
+
+  - id: C5
+    text: "MATCHi is a multi-sport booking system matching players at the same level."
+    source_ids: [S3]
+    confidence:
+      headline: 84
+      SQ: 90
+      EC: 70
+      CG: 88
+      CO: 72
+      VR: 85
+    verify_status: verified
+
+  - id: C6
+    text: "MATCHi covers padel, tennis, badminton, squash, table tennis, and pickleball."
+    source_ids: [S3]
+    confidence:
+      headline: 83
+      SQ: 90
+      EC: 68
+      CG: 87
+      CO: 70
+      VR: 85
+    verify_status: verified
+
+  - id: C7
+    text: "Courtside is Indonesia's padel-only booking and club management app."
+    source_ids: [S4]
+    confidence:
+      headline: 86
+      SQ: 88
+      EC: 72
+      CG: 90
+      CO: 80
+      VR: 88
+    verify_status: verified
+
+  - id: C8
+    text: "Courtside supports open play match creation and match history tracking."
+    source_ids: [S4]
+    confidence:
+      headline: 84
+      SQ: 88
+      EC: 70
+      CG: 88
+      CO: 78
+      VR: 88
+    verify_status: verified
+
+  - id: C9
+    text: "PADLR. is pre-launch (Spring 2026 iOS) with OpenSkill 0–7 rating and match logging."
+    source_ids: [S5]
+    confidence:
+      headline: 88
+      SQ: 90
+      EC: 75
+      CG: 92
+      CO: 70
+      VR: 90
+    verify_status: verified
+
+  - id: C10
+    text: "Padel One uses ELO 0.5–7.0 with questionnaire seed and auto adjustment."
+    source_ids: [S6]
+    confidence:
+      headline: 87
+      SQ: 90
+      EC: 72
+      CG: 92
+      CO: 65
+      VR: 90
+    verify_status: verified
+
+  - id: C11
+    text: "Padel One offers booking, open games, tournaments, community feed, and rewards."
+    source_ids: [S6]
+    confidence:
+      headline: 85
+      SQ: 90
+      EC: 70
+      CG: 90
+      CO: 65
+      VR: 90
+    verify_status: verified
+
+  - id: C12
+    text: "PadelRank uses TrueSkill-based verified ratings on a 0–25 scale."
+    source_ids: [S7]
+    confidence:
+      headline: 90
+      SQ: 92
+      EC: 78
+      CG: 95
+      CO: 68
+      VR: 92
+    verify_status: verified
+
+  - id: C13
+    text: "PadelRank had 271 registered players across 49 countries at fetch time."
+    source_ids: [S7]
+    confidence:
+      headline: 75
+      SQ: 90
+      EC: 60
+      CG: 90
+      CO: 55
+      VR: 80
+    verify_status: verified
+
+  - id: C14
+    text: "Ace offers free match organization with invite crew or meet new players."
+    source_ids: [S8]
+    confidence:
+      headline: 88
+      SQ: 90
+      EC: 70
+      CG: 92
+      CO: 65
+      VR: 90
+    verify_status: verified
+
+  - id: C15
+    text: "Padel Mates provides skill-based smart matching and cost splitting."
+    source_ids: [S9]
+    confidence:
+      headline: 84
+      SQ: 88
+      EC: 72
+      CG: 88
+      CO: 70
+      VR: 88
+    verify_status: verified
+
+  - id: C16
+    text: "Padel Mates is multi-sport (padel, tennis, badminton, squash) booking platform."
+    source_ids: [S9]
+    confidence:
+      headline: 86
+      SQ: 88
+      EC: 75
+      CG: 90
+      CO: 72
+      VR: 88
+    verify_status: verified
+
+  - id: C17
+    text: "RacketPal enables chat-organized singles/doubles/social matches and local leagues."
+    source_ids: [S10]
+    confidence:
+      headline: 85
+      SQ: 90
+      EC: 68
+      CG: 90
+      CO: 70
+      VR: 90
+    verify_status: verified
+
+  - id: C18
+    text: "Padel Mixer supports share-link invites, waitlists, and host approval for events."
+    source_ids: [S11]
+    confidence:
+      headline: 90
+      SQ: 92
+      EC: 75
+      CG: 95
+      CO: 72
+      VR: 92
+    verify_status: verified
+
+  - id: C19
+    text: "Padler positions as Indonesia-first padel player platform for matches and communities."
+    source_ids: [S12]
+    confidence:
+      headline: 62
+      SQ: 75
+      EC: 55
+      CG: 70
+      CO: 75
+      VR: 55
+    verify_status: snippet-only
+
+  - id: C20
+    text: "Playtomic holds ~73% UK padel club platform share per Playskan live data."
+    source_ids: [S13]
+    confidence:
+      headline: 68
+      SQ: 70
+      EC: 60
+      CG: 75
+      CO: 55
+      VR: 70
+    verify_status: verified
+
+  - id: C21
+    text: "OpenCourt offers branded club apps with open games and doubles matchmaking."
+    source_ids: [S14]
+    confidence:
+      headline: 82
+      SQ: 88
+      EC: 65
+      CG: 88
+      CO: 60
+      VR: 85
+    verify_status: verified

@@ -1,0 +1,24 @@
+schema_version: "1.0"
+research_slug: padel-codebase-readiness-prep
+generated_at: "2026-07-30T11:10:00Z"
+source_boundary: public-extended
+domain_primary: technical
+domain_secondary: []
+
+sources:
+  - id: S3
+    url: file://docs/tech-stack.md
+    title: "Paadel.app tech stack snapshot"
+    tier: T0
+    fetch_status: verified
+    verified_at: "2026-07-30T11:10:00Z"
+    excerpt: "client-first Next.js… no Server Actions / RSC data fetching"
+    accessed_date: "2026-07-30"
+    claim_ids: [C1]
+
+claims:
+  - id: C1
+    text: "Web app features must use client components + TanStack Query to Elysia API."
+    source_ids: [S3]
+    confidence: { headline: 95, SQ: 100, EC: 100, CG: 95, CO: 90, VR: 95 }
+    verify_status: verified
