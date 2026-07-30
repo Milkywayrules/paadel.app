@@ -28,7 +28,7 @@ services:
   migrate:
     build:
       context: .
-      target: deps
+      target: migrate
     working_dir: /app
     command: ["bun", "run", "db:migrate"]
     depends_on:
