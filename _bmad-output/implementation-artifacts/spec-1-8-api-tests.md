@@ -8,7 +8,7 @@ followup_review_recommended: false
 baseline_revision: '129c26fff624b6fbf81c2026b558a5e0a2557bcd'
 final_revision: '7fb97ca'
 operator_actions:
-  - 'Start local PostgreSQL and Redis with `docker compose up -d` (or equivalent) so `DATABASE_URL` in `.env` is reachable.'
+  - 'Start local PostgreSQL and Redis with `docker compose up -d` (or equivalent) so `DB_URL` in `.env` is reachable.'
   - 'Apply database migrations with `bun run db:migrate` against the local database.'
   - 'Run `bun run --filter @paadel/api test:integration` and confirm all integration tests pass.'
 context:

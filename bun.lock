@@ -6,6 +6,7 @@
       "name": "paadel",
       "devDependencies": {
         "@biomejs/biome": "^2.5.6",
+        "@paadel/env": "workspace:*",
         "@types/node": "^22.17.2",
         "lefthook": "^1.11.14",
         "turbo": "^2.5.4",

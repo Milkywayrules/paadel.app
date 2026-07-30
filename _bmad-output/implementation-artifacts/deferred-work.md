@@ -70,4 +70,4 @@ location: packages/env
 severity: low
 reason: mixed legacy names (`DATABASE_URL`, `GITHUB_*`, `CORS_ORIGIN`) vs tier-aware schema.
 status: done 2026-07-30
-resolution: `APP_ENV` tier, `DB_URL`, `API_CORS_ORIGIN`, `OAUTH_GITHUB_*`; documented in `docs/env-variables.md`
+resolution: `APP_ENV` tier, `DB_URL`, `API_CORS_ORIGIN`, `OAUTH_GITHUB_*`; canonical schema in `packages/env`, local template in `.env.example`

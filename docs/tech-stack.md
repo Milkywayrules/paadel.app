@@ -10,51 +10,47 @@
 
 ## Locked overrides (draft wins over personal doc)
 
-| Area | Choice | Notes |
-| --- | --- | --- |
-| UI | **Mantine only** | Primary component system via `packages/ui`. Do **not** adopt shadcn/Tailwind as primary. |
-| Forms | **react-hook-form** | With Zod resolver |
-| Client state | **zustand** | Only when needed — not by default everywhere |
-| Verasic Laravel/Vue/Flutter | Reference only | Not product stack |
+| Area                        | Choice              | Notes                                                                                    |
+| --------------------------- | ------------------- | ---------------------------------------------------------------------------------------- |
+| UI                          | **Mantine only**    | Primary component system via `packages/ui`. Do **not** adopt shadcn/Tailwind as primary. |
+| Forms                       | **react-hook-form** | With Zod resolver                                                                        |
+| Client state                | **zustand**         | Only when needed — not by default everywhere                                             |
+| Verasic Laravel/Vue/Flutter | Reference only      | Not product stack                                                                        |
 
 ## Full stack
 
-| Layer | Choice |
-| --- | --- |
-| Runtime / package manager | **Bun** (local dev; optimize dev/stg/prod consistently) |
-| Monorepo | **Turborepo** |
-| Language | **Strict TypeScript** |
-| Web | **Next.js App Router**, **client-first** — app features via client components + TanStack Query → Elysia API; **no Server Actions / RSC data fetching** for app features |
-| Data fetching / URL state | **TanStack Query**, **nuqs** |
-| API | **Elysia** (compiled) + Zod everywhere + **Scalar** + **OpenTelemetry** |
-| Validation / types | **Zod** — infer types from Zod; avoid hand-written interfaces where Zod applies |
-| Logging | **evlog** drain |
-| DB | **PostgreSQL** + **Drizzle ORM** (audit fields on tables) |
-| Cache / pubsub | **Redis** |
-| Realtime | **WebSocket** (+ `packages/ws-protocol`) |
-| UI | **Mantine** via **`packages/ui`** |
-| Auth | **Better Auth** — email/password + GitHub OAuth; multi-tenant schema prep |
-| Env guard | **@t3-oss/env-nextjs** (or t3-env pattern) as **`packages/env`** |
-| Email | **Resend** + **React Email** → **`packages/email`** |
-| Object storage | **Cloudflare R2** — bucket `bucket---paadel-app` with env prefixes (`dev/`, `stg/`, `prod/`); enforce prefix via env config. Post–MVP-n: migrate toward separate buckets — record ADR when migrating |
-| Secrets | **Doppler** default for all envs |
-| Hosting | **Coolify** + **Docker Compose** on Contabo VPS (Ubuntu 22) |
-| DNS | **Cloudflare** (orange cloud) |
-| Lint / format | **Biome** + **ultracite** (strict) |
-| Git hooks | **lefthook** |
+| Layer                     | Choice                                                                                                                                                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Runtime / package manager | **Bun** (local dev; optimize dev/stg/prod consistently)                                                                                                                                              |
+| Monorepo                  | **Turborepo**                                                                                                                                                                                        |
+| Language                  | **Strict TypeScript**                                                                                                                                                                                |
+| Web                       | **Next.js App Router**, **client-first** — app features via client components + TanStack Query → Elysia API; **no Server Actions / RSC data fetching** for app features                              |
+| Data fetching / URL state | **TanStack Query**, **nuqs**                                                                                                                                                                         |
+| API                       | **Elysia** (compiled) + Zod everywhere + **Scalar** + **OpenTelemetry**                                                                                                                              |
+| Validation / types        | **Zod** — infer types from Zod; avoid hand-written interfaces where Zod applies                                                                                                                      |
+| Logging                   | **evlog** drain                                                                                                                                                                                      |
+| DB                        | **PostgreSQL** + **Drizzle ORM** (audit fields on tables)                                                                                                                                            |
+| Cache / pubsub            | **Redis**                                                                                                                                                                                            |
+| Realtime                  | **WebSocket** (+ `packages/ws-protocol`)                                                                                                                                                             |
+| UI                        | **Mantine** via **`packages/ui`**                                                                                                                                                                    |
+| Auth                      | **Better Auth** — email/password + GitHub OAuth; multi-tenant schema prep                                                                                                                            |
+| Env guard                 | **@t3-oss/env-nextjs** (or t3-env pattern) as **`packages/env`**                                                                                                                                     |
+| Email                     | **Resend** + **React Email** → **`packages/email`**                                                                                                                                                  |
+| Object storage            | **Cloudflare R2** — bucket `bucket---paadel-app` with env prefixes (`dev/`, `stg/`, `prod/`); enforce prefix via env config. Post–MVP-n: migrate toward separate buckets — record ADR when migrating |
+| Secrets                   | **Doppler** (SoT for values) — `doppler.yaml`, `packages/env` manifest + Zod schema, `bun run doppler:validate` |
+| Hosting                   | **Coolify** + **Docker Compose** on Contabo VPS (Ubuntu 22)                                                                                                                                          |
+| DNS                       | **Cloudflare** (orange cloud)                                                                                                                                                                        |
+| Lint / format             | **Biome** + **ultracite** (strict)                                                                                                                                                                   |
+| Git hooks                 | **lefthook**                                                                                                                                                                                         |
 
-## Environment matrix
+## Secrets (Doppler SoT)
 
-See **`docs/env-variables.md`** for the full key list, Doppler mapping, and deploy notes.
-
-| Env | `APP_ENV` | App URL (planned) | R2 prefix | Secrets | Hosting |
-| --- | --- | --- | --- | --- | --- |
-| `dev` | `dev` | local + `paadel-app-dev.dioilham.com` | `dev/` | Doppler `dev` | Coolify / local |
-| `stg` | `stg` | `paadel-app-stg.dioilham.com` | `stg/` | Doppler `stg` | Coolify on Contabo VPS |
-| `preview` | `preview` | PR / ephemeral URL | `stg/` (default) | Doppler or inline | Coolify preview |
-| `prod` | `prod` | `paadel-app.dioilham.com` | `prod/` | Doppler `prod` | Coolify on Contabo VPS |
-
-Domain purchase pending — TLD pattern above is canonical until purchased.
+- **Values:** Doppler configs `dev` | `stg` | `prd` (runtime `APP_ENV=prod` for `prd`)
+- **Shape:** `packages/env` Zod schema + `packages/env/src/manifest.ts`
+- **Local dev:** `bun run doppler:setup` → `bun run dev`
+- **Validate:** `bun run doppler:validate` (also in CI when `DOPPLER_TOKEN` is set)
+- **Deploy:** Coolify injects Doppler env → `docker compose -f docker-compose.deploy.yml`
+- **`.env` cache (optional):** `doppler secrets download --no-file --format env > .env`
 
 ## Monorepo packages
 
@@ -76,14 +72,14 @@ Skeleton is a starting point — extend only when justified; keep strict depende
 
 ## Product constraints affecting stack
 
-| Constraint | Implication |
-| --- | --- |
-| MVP1–2 audience | Players only — no active org/club UX |
-| Client-first Next.js | No Server Actions / RSC data fetching for app features |
-| Public `/` | Minimal placeholder or redirect — no SEO/marketing build-out until MVP3+ |
-| Multi-tenant prep | `organizationId` / tenant columns + Better Auth org capability at schema level only |
-| Fail-fast | Every stack layer must pass smoke check before feature work |
-| AI-agent-readable code | Production-grade, explicit layers, high cohesion over coupling |
+| Constraint             | Implication                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| MVP1–2 audience        | Players only — no active org/club UX                                                |
+| Client-first Next.js   | No Server Actions / RSC data fetching for app features                              |
+| Public `/`             | Minimal placeholder or redirect — no SEO/marketing build-out until MVP3+            |
+| Multi-tenant prep      | `organizationId` / tenant columns + Better Auth org capability at schema level only |
+| Fail-fast              | Every stack layer must pass smoke check before feature work                         |
+| AI-agent-readable code | Production-grade, explicit layers, high cohesion over coupling                      |
 
 ## Explicit non-goals (MVP1–2 stack scope)
 

@@ -15,6 +15,10 @@
     "./features": {
       "types": "./dist/features.d.ts",
       "default": "./dist/features.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "default": "./dist/manifest.js"
     }
   },
   "scripts": {
