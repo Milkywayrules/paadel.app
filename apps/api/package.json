@@ -7,6 +7,8 @@
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "start": "bun run dist/index.js",
+    "test": "bun test src/health.test.ts",
+    "test:integration": "bun test --preload ./src/test/preload.ts --timeout 10000 ./src/integration/matches.flow.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "clean": "rm -rf dist"
   },
@@ -19,6 +21,8 @@
     "@paadel/db": "workspace:*",
     "@paadel/domain": "workspace:*",
     "@paadel/env": "workspace:*",
+    "@paadel/ws-protocol": "workspace:*",
+    "@aws-sdk/client-s3": "^3.876.0",
     "drizzle-orm": "^0.45.2",
     "elysia": "^1.4.29",
     "evlog": "^2.22.4",

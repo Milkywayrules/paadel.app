@@ -1,5 +1,6 @@
 "use client";
 
+import { clientEnv } from "@paadel/env/client";
 import {
   Alert,
   Button,
@@ -91,9 +92,11 @@ function LoginForm() {
           </Stack>
         </form>
 
-        <Button onClick={handleGitHub} variant="default">
-          Continue with GitHub
-        </Button>
+        {clientEnv.NEXT_PUBLIC_OAUTH_GITHUB_ENABLED ? (
+          <Button onClick={handleGitHub} variant="default">
+            Continue with GitHub
+          </Button>
+        ) : null}
 
         <Text size="sm">
           No account?{" "}

@@ -74,6 +74,19 @@ export const matchParticipants = pgTable(
   ]
 );
 
+export const auditEvents = pgTable("audit_events", {
+  action: text("action").notNull(),
+  actorId: uuid("actor_id"),
+  id: uuid("id").primaryKey().defaultRandom(),
+  metadata: text("metadata").notNull().default("{}"),
+  occurredAt: timestamp("occurred_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  organizationId: uuid("organization_id"),
+  resourceId: text("resource_id").notNull(),
+  resourceType: text("resource_type").notNull(),
+});
+
 export const invites = pgTable("invites", {
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   id: uuid("id").primaryKey().defaultRandom(),

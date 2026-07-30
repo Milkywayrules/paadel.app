@@ -66,3 +66,5 @@ export class InMemoryAuditLog implements AuditLogWriter {
 export function createAuditLog(): AuditLogWriter {
   return new InMemoryAuditLog();
 }
+
+export { createDrizzleAuditLog, DrizzleAuditLog } from "./drizzle.js";

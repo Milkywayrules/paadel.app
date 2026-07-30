@@ -16,7 +16,7 @@ The paadel.app codebase must be **layered, env-guarded, and smoke-testable** bef
 | --- | --- | --- | --- |
 | **Monorepo** | Turborepo + Bun workspaces | `bun run build` | Cannot share packages |
 | **Lint/format** | Biome + ultracite + lefthook | `biome check` | Style drift, agent errors |
-| **Env** | `packages/env` t3 pattern, all apps | Fail on missing `DATABASE_URL` | Silent prod misconfig |
+| **Env** | `packages/env` t3 pattern, all apps | Fail on missing `DB_URL` | Silent prod misconfig |
 | **DB** | Drizzle schema + audit fields + migrate | `db:migrate` against Postgres | No persistence |
 | **Auth** | Better Auth email + GitHub + org schema prep | Login flow on dev | No MVP1 loop |
 | **API** | Elysia + Zod + Scalar + OTel + evlog | `/health`, `/docs` | No client data path |

@@ -13,6 +13,7 @@
     "smoke": "bash scripts/smoke.sh",
     "format": "biome format --write .",
     "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
     "db:generate": "bun run --filter @paadel/db generate",
     "db:migrate": "bun run --filter @paadel/db migrate",
     "clean": "turbo run clean && rm -rf node_modules"

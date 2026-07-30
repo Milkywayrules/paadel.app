@@ -10,38 +10,83 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
-  setup:
-    name: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Record workspace
-        run: echo "workspace=$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
+env:
+  CI: true
+  ENV_SKIP_VALIDATION: "true"
 
+jobs:
   lint:
     name: lint
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Lint stub
-        run: echo "lint stub — replace with project linter"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+
+  typecheck:
+    name: typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
 
   test:
     name: test
-    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Test stub
-        run: echo "test stub — replace with project test runner"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+      - run: bun install --frozen-lockfile
+      - run: bun run test
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+      - run: bun install --frozen-lockfile
+      - run: bun run build
 
   ci:
     name: ci
-    needs: [lint, test]
+    needs: [lint, typecheck, test, build]
     runs-on: ubuntu-latest
     steps:
       - name: Summary
-        run: |
-          echo "ci job green — required status check name for branch protection"
+        run: echo "ci job green — required status check name for branch protection"

@@ -17,3 +17,12 @@ Required CI status check name: **`ci`**.
 
 Full spec: install **verasic-github-governance** from [verasic-skills](https://github.com/Milkywayrules/verasic-skills) (`skills/verasic-github-governance/SKILL.md`).
 <!-- verasic-governance:end -->
+
+## Git branch workflow (all agents)
+
+**Read `CONTRIBUTING.md` before any git write.**
+
+- Never commit or push on `main` — use `feat/*` (or `fix/*`) branches and open a PR
+- Lefthook **blocks** default-branch commits and pushes (not just warns)
+- Cursor rule: `.cursor/rules/git-branch-workflow.mdc` (`alwaysApply: true`)
+- Break-glass only when the user explicitly requests: `VERASIC_GOVERNANCE_BYPASS=1`

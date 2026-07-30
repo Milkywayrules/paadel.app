@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { authSchema } from "./schema/auth.js";
 import {
+  auditEvents,
   invites,
   matches,
   matchParticipants,
@@ -12,6 +13,7 @@ import {
 
 const schema = {
   ...authSchema,
+  auditEvents,
   invites,
   matches,
   matchParticipants,
@@ -19,7 +21,7 @@ const schema = {
   players,
 };
 
-const queryClient = postgres(serverEnv.DATABASE_URL, {
+const queryClient = postgres(serverEnv.DB_URL, {
   connect_timeout: 10,
   idle_timeout: 20,
   max: 10,
@@ -31,6 +33,7 @@ export type Database = typeof db;
 export * from "./schema/auth.js";
 export { authSchema } from "./schema/auth.js";
 export {
+  auditEvents,
   invites,
   matches,
   matchParticipants,

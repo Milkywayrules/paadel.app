@@ -8,6 +8,13 @@
       "when": 1785408840181,
       "tag": "0000_tense_blue_shield",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1785415000000,
+      "tag": "0001_audit_events",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,33 @@
+---
+description: Git branch workflow — feature branches and PRs only; never commit or push to main
+alwaysApply: true
+---
+
+# Git branch workflow
+
+Read `CONTRIBUTING.md` before **any** git write: `git commit`, `git push`, branch create/delete, merge.
+
+## Non-negotiable
+
+- **Never commit on `main`** (or the repo default branch). Create a feature branch first: `git checkout -b feat/short-description`
+- **Never push to `main`**. Push the feature branch and open a PR.
+- **Hook warnings are hard stops**, not suggestions. If lefthook blocks, fix the workflow — do not bypass unless the user explicitly requests break-glass.
+- Break-glass only when the user explicitly asks: `VERASIC_GOVERNANCE_BYPASS=1` (document why in the PR or chat).
+
+## Before every commit (agent checklist)
+
+1. Run `git branch --show-current` — must **not** be `main` / default branch
+2. If on default branch: `git checkout -b feat/<topic>` before staging
+3. Draft commit message per verasic-git-commits-convention
+4. After commit: push branch (`git push -u origin HEAD`), not `main`
+
+## PR flow
+
+1. Push feature branch
+2. `gh pr create` (load `GH_TOKEN` first — see AGENTS.md)
+3. Wait for required check **`ci`**
+4. Merge via PR — never direct merge locally to `main` without user approval
+
+## Why
+
+Future agent sessions do not inherit chat context. Hooks + this rule enforce the same floor for every spawn.

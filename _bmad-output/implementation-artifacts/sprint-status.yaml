@@ -1,0 +1,22 @@
+generated: 2026-07-30
+last_updated: 2026-07-30
+project: paadel.app
+project_key: PAADEL
+tracking_system: file-system
+story_location: "_bmad-output/implementation-artifacts"
+
+development_status:
+  epic-1: done
+  1-1-monorepo-scaffold: done
+  1-2-match-invite-api: done
+  1-3-web-ui: done
+  1-4-docker-coolify: done
+  1-5-persist-audit-log: done
+  1-6-r2-smoke: done
+  1-7-websocket-smoke: done
+  1-8-api-tests: done
+  1-9-dev-deploy-verify: done
+  1-10-ci-pipeline: done
+  epic-1-retrospective: optional
+
+action_items: []
