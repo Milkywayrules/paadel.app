@@ -6,7 +6,7 @@ import { serverEnv } from "@paadel/env/server";
 import { Elysia } from "elysia";
 import { initLogger } from "evlog";
 import { evlog } from "evlog/elysia";
-import { matchRoutes } from "./routes/matches.js";
+import { inviteRoutes, matchRoutes } from "./routes/matches.js";
 
 initLogger({ env: { service: "paadel-api" } });
 
@@ -63,6 +63,7 @@ const app = new Elysia()
   )
   .mount(auth.handler)
   .use(matchRoutes)
+  .use(inviteRoutes)
   .listen({
     hostname: serverEnv.API_HOST,
     port: serverEnv.API_PORT,

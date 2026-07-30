@@ -25,6 +25,7 @@
         "@paadel/db": "workspace:*",
         "@paadel/domain": "workspace:*",
         "@paadel/env": "workspace:*",
+        "drizzle-orm": "^0.45.2",
         "elysia": "^1.4.29",
         "evlog": "^2.22.4",
         "zod": "^3.25.76",
@@ -41,6 +42,7 @@
       "dependencies": {
         "@hookform/resolvers": "^5.2.1",
         "@paadel/auth": "workspace:*",
+        "@paadel/domain": "workspace:*",
         "@paadel/env": "workspace:*",
         "@paadel/ui": "workspace:*",
         "@tanstack/react-query": "^5.101.4",
@@ -158,10 +160,6 @@
         "@types/react": "^19.1.12",
         "@types/react-dom": "^19.1.9",
         "typescript": "^5.9.2",
-      },
-      "peerDependencies": {
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
       },
     },
     "packages/ws-protocol": {

@@ -1,25 +1,20 @@
 import { serverEnv } from "@paadel/env/server";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
+import { authSchema } from "./schema/auth.js";
 import {
-  authAccounts,
-  authMembers,
-  authOrganizations,
-  authSessions,
-  authUsers,
-  authVerifications,
-} from "./schema/auth.js";
-import { invites, matches, organizations, players } from "./schema/index.js";
-
-const schema = {
-  authAccounts,
-  authMembers,
-  authOrganizations,
-  authSessions,
-  authUsers,
-  authVerifications,
   invites,
   matches,
+  matchParticipants,
+  organizations,
+  players,
+} from "./schema/index.js";
+
+const schema = {
+  ...authSchema,
+  invites,
+  matches,
+  matchParticipants,
   organizations,
   players,
 };
@@ -32,3 +27,13 @@ const queryClient = postgres(serverEnv.DATABASE_URL, {
 
 export const db = drizzle(queryClient, { schema });
 export type Database = typeof db;
+
+export * from "./schema/auth.js";
+export { authSchema } from "./schema/auth.js";
+export {
+  invites,
+  matches,
+  matchParticipants,
+  organizations,
+  players,
+} from "./schema/index.js";

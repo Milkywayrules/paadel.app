@@ -1,4 +1,11 @@
-import { integer, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 export const auditColumns = {
   createdAt: timestamp("created_at", { withTimezone: true })
@@ -33,13 +40,39 @@ export const matches = pgTable("matches", {
     .notNull()
     .references(() => players.id),
   id: uuid("id").primaryKey().defaultRandom(),
+  locationLabel: text("location_label"),
   maxPlayers: integer("max_players").notNull().default(4),
   organizationId: uuid("organization_id").references(() => organizations.id),
   scheduledAt: timestamp("scheduled_at", { withTimezone: true }),
+  skillBandHint: text("skill_band_hint"),
   status: text("status").notNull().default("draft"),
   title: text("title").notNull(),
   ...auditColumns,
 });
+
+export const matchParticipants = pgTable(
+  "match_participants",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    joinedAt: timestamp("joined_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    matchId: uuid("match_id")
+      .notNull()
+      .references(() => matches.id, { onDelete: "cascade" }),
+    playerId: uuid("player_id")
+      .notNull()
+      .references(() => players.id, { onDelete: "cascade" }),
+    role: text("role").notNull().default("player"),
+    ...auditColumns,
+  },
+  (table) => [
+    uniqueIndex("match_participants_match_player_uidx").on(
+      table.matchId,
+      table.playerId
+    ),
+  ]
+);
 
 export const invites = pgTable("invites", {
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
@@ -51,7 +84,7 @@ export const invites = pgTable("invites", {
     .references(() => players.id),
   matchId: uuid("match_id")
     .notNull()
-    .references(() => matches.id),
+    .references(() => matches.id, { onDelete: "cascade" }),
   status: text("status").notNull().default("pending"),
   token: text("token").notNull().unique(),
   ...auditColumns,

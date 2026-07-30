@@ -9,12 +9,14 @@ export default function HomePage() {
       <Stack align="center" gap="md">
         <Title order={1}>Paadel</Title>
         <Text c="dimmed" ta="center">
-          Casual padel match management for players. MVP1 is on the way.
+          Create casual padel matches, share invite links, and track who joined.
         </Text>
-        <Text fw={600}>Coming soon</Text>
         <Button component={Link} href="/app">
-          Open app shell
+          Open app
         </Button>
+        <Text c="dimmed" size="sm">
+          MVP1 — players only. No court booking yet.
+        </Text>
       </Stack>
     </Container>
   );

@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
     "@paadel/auth": "workspace:*",
+    "@paadel/domain": "workspace:*",
     "@paadel/env": "workspace:*",
     "@paadel/ui": "workspace:*",
     "@tanstack/react-query": "^5.101.4",

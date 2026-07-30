@@ -19,6 +19,22 @@
   },
   "overrides": [
     {
+      "includes": [
+        "apps/web/src/app/**/*.tsx",
+        "apps/web/src/components/**/*.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "noExcessiveCognitiveComplexity": "off"
+          },
+          "performance": {
+            "noJsxPropsBind": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["packages/**/src/index.ts", "packages/**/src/index.tsx"],
       "linter": {
         "rules": {

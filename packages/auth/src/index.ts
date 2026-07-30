@@ -1,4 +1,4 @@
-import { db } from "@paadel/db";
+import { authSchema, db } from "@paadel/db";
 import { serverEnv } from "@paadel/env/server";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
@@ -9,6 +9,7 @@ export const auth = betterAuth({
   baseURL: serverEnv.BETTER_AUTH_URL,
   database: drizzleAdapter(db, {
     provider: "pg",
+    schema: authSchema,
   }),
   emailAndPassword: {
     enabled: true,

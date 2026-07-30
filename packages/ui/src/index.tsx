@@ -26,12 +26,22 @@ export function PaadelProvider({
 }
 
 export {
+  Alert,
+  Badge,
   Button,
+  Card,
   ColorSchemeScript,
   Container,
+  CopyButton,
   Group,
+  Loader,
+  Paper,
+  PasswordInput,
+  Select,
   Stack,
   Tabs,
   Text,
+  Textarea,
+  TextInput,
   Title,
 } from "@mantine/core";
