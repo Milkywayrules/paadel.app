@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "python3 .bmad-loop/bmad_loop_hook.py SessionStart",
+        "timeout": 60
+      }
+    ],
+    "stop": [
+      {
+        "command": "python3 .bmad-loop/bmad_loop_hook.py Stop",
+        "timeout": 600
+      }
+    ]
+  }
+}

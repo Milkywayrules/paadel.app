@@ -1,0 +1,15 @@
+name = "cursor"
+binary = "cursor"
+prompt_template = "Use the {skill} skill now, and use subagents as needed: {args}"
+launch_args = ["agent"]
+bypass_args = ["--force", "--trust"]
+model_flag = "--model"
+usage_parser = "none"
+stop_without_result_nudges = 5
+first_run_note = "run `cursor agent login` once if not authenticated"
+skill_tree = ".agents/skills"
+
+[hooks]
+dialect = "copilot-settings-json"
+config_path = ".cursor/hooks.json"
+events = { stop = "Stop", sessionStart = "SessionStart" }
