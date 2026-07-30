@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from "bun:test";
+import { beforeAll, beforeEach, describe, expect, test } from "bun:test";
 import { db, invites } from "@paadel/db";
 import { eq } from "drizzle-orm";
 import { createApp } from "../app.js";
@@ -12,11 +12,25 @@ import {
 const app = createApp();
 
 describe("match invite API integration", () => {
+  beforeAll(async () => {
+    // First auth/DB touch in Bun test can leave handles that stall test teardown;
+    // warm up outside any timed test case.
+    await resetDb();
+    const response = await apiRequest<{ error: string }>(app, "/matches");
+    expect(response.status).toBe(401);
+  });
+
   beforeEach(async () => {
     await resetDb();
   });
 
-  test("create → invite → preview → accept → list happy path", async () => {
+  test("returns 401 for unauthenticated list", async () => {
+    const response = await apiRequest<{ error: string }>(app, "/matches");
+    expect(response.status).toBe(401);
+    expect(response.json.error).toBe("Unauthorized");
+  });
+
+  test("create invite preview accept list happy path", async () => {
     const host = await signupUser(app, {
       email: "host@integration.test",
       name: "Host Player",
@@ -124,12 +138,6 @@ describe("match invite API integration", () => {
     );
     expect(listedMatch).toBeTruthy();
     expect(listedMatch?.participants.length).toBe(2);
-  });
-
-  test("returns 401 for unauthenticated list", async () => {
-    const response = await apiRequest<{ error: string }>(app, "/matches");
-    expect(response.status).toBe(401);
-    expect(response.json.error).toBe("Unauthorized");
   });
 
   test("returns 403 when non-host creates invite", async () => {

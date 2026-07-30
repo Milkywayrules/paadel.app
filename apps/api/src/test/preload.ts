@@ -24,8 +24,8 @@ try {
     }
   }
 } catch {
-  // Local integration tests require a `.env` with DATABASE_URL.
+  // Local integration tests require a `.env` with DB_URL.
 }
 
 process.env.NODE_ENV = "test";
-process.env.SKIP_ENV_VALIDATION = "true";
+process.env.ENV_SKIP_VALIDATION = "true";

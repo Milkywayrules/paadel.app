@@ -48,7 +48,7 @@ export async function resetDb(): Promise<void> {
         member,
         invitation,
         organization,
-        user
+        "user"
       CASCADE
     `
   );

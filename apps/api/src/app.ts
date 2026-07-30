@@ -13,19 +13,22 @@ import { wsRoutes } from "./routes/ws.js";
 initLogger({ env: { service: "paadel-api" } });
 
 export function createApp() {
-  return new Elysia()
-    .use(evlog())
-    .use(
-      cors({
-        credentials: true,
-        origin: serverEnv.CORS_ORIGIN,
-      })
-    )
-    .use(
+  let app = new Elysia().use(evlog()).use(
+    cors({
+      credentials: true,
+      origin: serverEnv.API_CORS_ORIGIN,
+    })
+  );
+
+  if (process.env.NODE_ENV !== "test") {
+    app = app.use(
       opentelemetry({
         serviceName: "paadel-api",
       })
-    )
+    );
+  }
+
+  return app
     .use(
       openapi({
         documentation: {
