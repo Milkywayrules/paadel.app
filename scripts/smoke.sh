@@ -69,13 +69,22 @@ if [[ -f .env ]]; then
   check "API /health" curl -sf http://localhost:3001/health
   check "Scalar /docs" curl -sf http://localhost:3001/docs
   check "API /matches stub" curl -sf http://localhost:3001/matches
+  check "WebSocket ping/pong" bash -c 'bun --env-file=.env -e "
+    const ws = new WebSocket(\"ws://localhost:3001/ws\");
+    const timeout = setTimeout(() => { ws.close(); process.exit(1); }, 5000);
+    ws.addEventListener(\"open\", () => ws.send(JSON.stringify({ type: \"ping\", payload: {} })));
+    ws.addEventListener(\"message\", (ev) => {
+      const msg = JSON.parse(String(ev.data));
+      if (msg.type === \"pong\") { clearTimeout(timeout); ws.close(); process.exit(0); }
+    });
+  "'
 else
   skip_check "API endpoints" "no .env"
+  skip_check "WebSocket handshake" "no .env"
 fi
 
 skip_check "Better Auth OAuth (dev)" "needs GITHUB_CLIENT_* + Postgres"
-skip_check "R2 upload prefix" "needs R2 credentials"
-skip_check "WebSocket handshake" "needs running API + WS client test"
+skip_check "R2 upload prefix" "optional — GET /health/r2 when R2 credentials configured"
 skip_check "Mantine /app render" "manual or e2e — build covers compile"
 skip_check "Coolify stg + Doppler" "deploy environment"
 

@@ -6,7 +6,9 @@ import { serverEnv } from "@paadel/env/server";
 import { Elysia } from "elysia";
 import { initLogger } from "evlog";
 import { evlog } from "evlog/elysia";
+import { r2SmokeCheck } from "./lib/r2.js";
 import { inviteRoutes, matchRoutes } from "./routes/matches.js";
+import { wsRoutes } from "./routes/ws.js";
 
 initLogger({ env: { service: "paadel-api" } });
 
@@ -61,9 +63,28 @@ const app = new Elysia()
       },
     }
   )
+  .get(
+    "/health/r2",
+    async ({ log }) => {
+      const result = await r2SmokeCheck();
+      if (!result.ok) {
+        log.warn("r2 smoke skipped", { reason: result.reason });
+        return { ok: false, reason: result.reason };
+      }
+      log.info("r2 smoke ok", { key: result.key });
+      return { key: result.key, ok: true };
+    },
+    {
+      detail: {
+        summary: "R2 prefix smoke check",
+        tags: ["system"],
+      },
+    }
+  )
   .mount(auth.handler)
   .use(matchRoutes)
   .use(inviteRoutes)
+  .use(wsRoutes)
   .listen({
     hostname: serverEnv.API_HOST,
     port: serverEnv.API_PORT,

@@ -1,4 +1,4 @@
-import { createAuditLog } from "@paadel/audit-log";
+import { createDrizzleAuditLog } from "@paadel/audit-log";
 import { db, invites, matches, matchParticipants } from "@paadel/db";
 import {
   createMatchInputSchema,
@@ -19,7 +19,7 @@ import {
   sessionPlugin,
 } from "../plugins/session.js";
 
-const auditLog = createAuditLog();
+const auditLog = createDrizzleAuditLog(db);
 
 export const matchRoutes = sessionPlugin.group("/matches", (app) =>
   app
