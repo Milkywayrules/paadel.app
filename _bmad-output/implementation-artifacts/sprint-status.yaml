@@ -14,7 +14,7 @@ development_status:
   1-5-persist-audit-log: done
   1-6-r2-smoke: done
   1-7-websocket-smoke: done
-  1-8-api-tests: ready-for-dev
+  1-8-api-tests: awaiting-operator
   1-9-dev-deploy-verify: done
   1-10-ci-pipeline: ready-for-dev
   epic-1-retrospective: optional
