@@ -67,7 +67,7 @@ sleep 2
 
 check "API /health" curl -sf http://localhost:3001/health
 check "Scalar /docs" curl -sf http://localhost:3001/docs
-check "API /matches stub" curl -sf http://localhost:3001/matches
+check "API /matches requires session" bash -c '[[ "$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/matches)" == "401" ]]'
 check "R2 upload prefix" curl -sf http://localhost:3001/health/r2
 check "WebSocket ping/pong" bash -c 'bun -e "
   const ws = new WebSocket(\"ws://localhost:3001/ws\");

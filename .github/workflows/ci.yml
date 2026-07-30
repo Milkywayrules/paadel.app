@@ -98,13 +98,27 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-
       - name: Install Doppler CLI
-        uses: dopplerhq/cli-action@v3
+        uses: dopplerhq/cli-action@v4
       - run: bun install --frozen-lockfile
       - run: bun run --filter @paadel/env build
+      - name: Check for Doppler token
+        id: token
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+        run: |
+          if [ -n "${DOPPLER_TOKEN}" ]; then
+            echo "present=true" >>"$GITHUB_OUTPUT"
+          else
+            echo "present=false" >>"$GITHUB_OUTPUT"
+          fi
       - name: Validate Doppler dev config keys
+        if: steps.token.outputs.present == 'true'
         env:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
         run: DOPPLER_CONFIG=dev bun run doppler:validate
+      - name: Warn when validation is unenforced
+        if: steps.token.outputs.present != 'true'
+        run: echo "::warning::DOPPLER_TOKEN secret is not set — Doppler key validation was skipped"
 
   ci:
     name: ci
