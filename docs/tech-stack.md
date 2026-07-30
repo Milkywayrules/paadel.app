@@ -45,11 +45,14 @@
 
 ## Environment matrix
 
-| Env | App URL (planned) | R2 prefix | Secrets | Hosting |
-| --- | --- | --- | --- | --- |
-| `dev` | local + `paadel-app-dev.dioilham.com` | `dev/` | Doppler `dev` | Coolify / local |
-| `stg` | `paadel-app-stg.dioilham.com` | `stg/` | Doppler `stg` | Coolify on Contabo VPS |
-| `prod` | `paadel-app.dioilham.com` | `prod/` | Doppler `prod` | Coolify on Contabo VPS |
+See **`docs/env-variables.md`** for the full key list, Doppler mapping, and deploy notes.
+
+| Env | `APP_ENV` | App URL (planned) | R2 prefix | Secrets | Hosting |
+| --- | --- | --- | --- | --- | --- |
+| `dev` | `dev` | local + `paadel-app-dev.dioilham.com` | `dev/` | Doppler `dev` | Coolify / local |
+| `stg` | `stg` | `paadel-app-stg.dioilham.com` | `stg/` | Doppler `stg` | Coolify on Contabo VPS |
+| `preview` | `preview` | PR / ephemeral URL | `stg/` (default) | Doppler or inline | Coolify preview |
+| `prod` | `prod` | `paadel-app.dioilham.com` | `prod/` | Doppler `prod` | Coolify on Contabo VPS |
 
 Domain purchase pending — TLD pattern above is canonical until purchased.
 

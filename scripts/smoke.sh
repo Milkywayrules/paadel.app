@@ -83,7 +83,7 @@ else
   skip_check "WebSocket handshake" "no .env"
 fi
 
-skip_check "Better Auth OAuth (dev)" "needs GITHUB_CLIENT_* + Postgres"
+skip_check "Better Auth OAuth (dev)" "needs OAUTH_GITHUB_* + OAUTH_GITHUB_ENABLED=true when APP_ENV=dev"
 skip_check "R2 upload prefix" "optional — GET /health/r2 when R2 credentials configured"
 skip_check "Mantine /app render" "manual or e2e — build covers compile"
 skip_check "Coolify stg + Doppler" "deploy environment"

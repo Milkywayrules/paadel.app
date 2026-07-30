@@ -7,7 +7,7 @@ const app = createApp().listen({
 });
 
 console.info(
-  `paadel-api listening on http://${serverEnv.API_HOST}:${serverEnv.API_PORT} (docs: /docs)`
+  `paadel-api listening on http://${serverEnv.API_HOST}:${serverEnv.API_PORT} (docs: /docs) [APP_ENV=${serverEnv.APP_ENV}]`
 );
 
 export type App = typeof app;

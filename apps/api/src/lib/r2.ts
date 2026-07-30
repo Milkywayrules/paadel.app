@@ -3,6 +3,7 @@ import {
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { defaultR2PrefixForAppEnv } from "@paadel/env/features";
 import { serverEnv } from "@paadel/env/server";
 
 let client: S3Client | null = null;
@@ -38,7 +39,8 @@ export async function r2SmokeCheck(): Promise<{
   reason?: string;
 }> {
   const bucket = serverEnv.R2_BUCKET_NAME;
-  const prefix = serverEnv.R2_PREFIX ?? "dev/";
+  const prefix =
+    serverEnv.R2_PREFIX ?? defaultR2PrefixForAppEnv(serverEnv.APP_ENV);
 
   if (!bucket) {
     return { ok: false, reason: "R2_BUCKET_NAME not configured" };

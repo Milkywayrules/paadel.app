@@ -21,7 +21,7 @@ const schema = {
   players,
 };
 
-const queryClient = postgres(serverEnv.DATABASE_URL, {
+const queryClient = postgres(serverEnv.DB_URL, {
   connect_timeout: 10,
   idle_timeout: 20,
   max: 10,
