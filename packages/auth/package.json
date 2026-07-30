@@ -1,0 +1,32 @@
+{
+  "name": "@paadel/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@paadel/db": "workspace:*",
+    "@paadel/env": "workspace:*",
+    "better-auth": "^1.6.25",
+    "drizzle-orm": "^0.45.2",
+    "react": "^19.1.1"
+  },
+  "devDependencies": {
+    "@paadel/config": "workspace:*",
+    "typescript": "^5.9.2"
+  }
+}

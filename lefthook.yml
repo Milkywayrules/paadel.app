@@ -2,8 +2,15 @@
 # Hooks are copied to .github/verasic-governance/hooks/ by bootstrap-repo.sh
 # commit-msg: run wire-hooks.sh after verasic-git-commits-convention is installed (verasic-init)
 
+# Verasic governance — lefthook standard for new repos
+# Hooks are copied to .github/verasic-governance/hooks/ by bootstrap-repo.sh
+# commit-msg: run wire-hooks.sh after verasic-git-commits-convention is installed (verasic-init)
+
 pre-commit:
   commands:
+    biome-check:
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
+      run: bunx biome check --staged --no-errors-on-unmatched {staged_files}
     governance-pre-commit:
       run: bash .github/verasic-governance/hooks/pre-commit
 

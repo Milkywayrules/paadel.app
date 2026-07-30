@@ -1,0 +1,31 @@
+{
+  "name": "@paadel/env",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./dist/server.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "^0.13.11",
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@paadel/config": "workspace:*",
+    "@types/node": "^22.17.2",
+    "typescript": "^5.9.2"
+  }
+}

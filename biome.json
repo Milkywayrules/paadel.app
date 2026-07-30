@@ -1,0 +1,37 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.6/schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next"
+  ],
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "apps/*/src/**",
+      "packages/*/src/**",
+      "apps/*/next.config.ts",
+      "packages/*/drizzle.config.ts",
+      "biome.json",
+      "turbo.json",
+      "package.json"
+    ]
+  },
+  "overrides": [
+    {
+      "includes": ["packages/**/src/index.ts", "packages/**/src/index.tsx"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noBarrelFile": "off"
+          }
+        }
+      }
+    }
+  ],
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  }
+}

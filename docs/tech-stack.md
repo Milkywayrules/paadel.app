@@ -36,7 +36,7 @@
 | Auth | **Better Auth** — email/password + GitHub OAuth; multi-tenant schema prep |
 | Env guard | **@t3-oss/env-nextjs** (or t3-env pattern) as **`packages/env`** |
 | Email | **Resend** + **React Email** → **`packages/email`** |
-| Object storage | **Cloudflare R2** — MVP1–2: single bucket, env prefixes (`dev/`, `stg/`, `prod/`); enforce prefix via env config. Post–MVP-n: migrate toward separate buckets — record ADR when migrating |
+| Object storage | **Cloudflare R2** — bucket `bucket---paadel-app` with env prefixes (`dev/`, `stg/`, `prod/`); enforce prefix via env config. Post–MVP-n: migrate toward separate buckets — record ADR when migrating |
 | Secrets | **Doppler** default for all envs |
 | Hosting | **Coolify** + **Docker Compose** on Contabo VPS (Ubuntu 22) |
 | DNS | **Cloudflare** (orange cloud) |

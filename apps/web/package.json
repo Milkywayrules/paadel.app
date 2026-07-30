@@ -1,0 +1,32 @@
+{
+  "name": "@paadel/web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf .next"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
+    "@paadel/auth": "workspace:*",
+    "@paadel/env": "workspace:*",
+    "@paadel/ui": "workspace:*",
+    "@tanstack/react-query": "^5.101.4",
+    "next": "^15.5.22",
+    "nuqs": "^2.9.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.62.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@paadel/config": "workspace:*",
+    "@types/node": "^22.17.2",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@paadel/email",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./templates/welcome": {
+      "types": "./dist/templates/welcome.d.ts",
+      "default": "./dist/templates/welcome.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@paadel/env": "workspace:*",
+    "@react-email/components": "^1.0.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "resend": "^6.18.1"
+  },
+  "devDependencies": {
+    "@paadel/config": "workspace:*",
+    "@types/react": "^19.1.12",
+    "typescript": "^5.9.2"
+  }
+}
