@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
-# verasic-github-governance — lightweight pre-commit reminder on default branch.
+# verasic-github-governance — block commits on the default branch (soft layer).
+# Mirrors pre-push: agents and humans must use feature branches + PR.
 set -euo pipefail
+
+if [[ "${VERASIC_GOVERNANCE_BYPASS:-}" == "1" ]]; then
+  echo "verasic-github-governance: pre-commit bypass active (VERASIC_GOVERNANCE_BYPASS=1)" >&2
+  exit 0
+fi
 
 branch="$(git symbolic-ref --quiet HEAD 2>/dev/null | sed 's@^refs/heads/@@' || true)"
 [[ -z "$branch" ]] && exit 0
@@ -14,9 +20,15 @@ if [[ -z "$default_branch" ]]; then
     fi
   done
 fi
+if [[ -z "$default_branch" ]]; then
+  default_branch="main"
+fi
 
-if [[ "$branch" == "${default_branch:-main}" || "$branch" == "main" || "$branch" == "master" ]]; then
-  echo "verasic-github-governance: committing on '$branch' — prefer feature branches + PR (see CONTRIBUTING.md)" >&2
+if [[ "$branch" == "$default_branch" || "$branch" == "main" || "$branch" == "master" ]]; then
+  echo "verasic-github-governance: commit on '$branch' blocked — use a feature branch + PR (see CONTRIBUTING.md)" >&2
+  echo "verasic-github-governance: git checkout -b feat/my-change   # then commit" >&2
+  echo "verasic-github-governance: break-glass: VERASIC_GOVERNANCE_BYPASS=1 git commit ..." >&2
+  exit 1
 fi
 
 exit 0

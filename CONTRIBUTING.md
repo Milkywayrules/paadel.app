@@ -12,9 +12,10 @@ Verasic repos use **feature branches + pull requests**. Do not push directly to 
 
 ## Local hooks
 
-This repo uses [lefthook](https://github.com/evilmartians/lefthook) to block direct pushes to the default branch. Break-glass only:
+This repo uses [lefthook](https://github.com/evilmartians/lefthook) to block **commits and pushes** to the default branch. Break-glass only:
 
 ```bash
+VERASIC_GOVERNANCE_BYPASS=1 git commit ...
 VERASIC_GOVERNANCE_BYPASS=1 git push origin main
 ```
 

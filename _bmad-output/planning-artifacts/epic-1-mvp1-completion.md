@@ -24,30 +24,30 @@ Dockerfile, docker-compose.yaml, deploy compose; dev deploy in progress.
 
 ## Story 1.5 — Persist audit log to PostgreSQL
 
-**Status:** ready-for-dev  
+**Status:** done  
 Replace in-memory audit log with durable DB writer; record create/invite/accept/join.
 
 ## Story 1.6 — R2 prefix smoke integration
 
-**Status:** ready-for-dev  
+**Status:** done  
 Minimal upload/read helper with env prefix enforcement (`dev/`).
 
 ## Story 1.7 — WebSocket handshake smoke
 
-**Status:** ready-for-dev  
+**Status:** done  
 Baseline WS route using `packages/ws-protocol`; smoke test in scripts/smoke.sh.
 
 ## Story 1.8 — API integration tests
 
-**Status:** ready-for-dev  
+**Status:** done  
 Cover match create, invite, accept, list with test DB or harness.
 
 ## Story 1.9 — Dev deploy verification
 
-**Status:** ready-for-dev  
+**Status:** done  
 Verify health, auth signup, match flow on `paadel-app-dev.dioilham.com`.
 
 ## Story 1.10 — CI pipeline
 
-**Status:** ready-for-dev  
+**Status:** done  
 GitHub Actions: typecheck, lint, build on PR.

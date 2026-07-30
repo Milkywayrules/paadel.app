@@ -2,7 +2,7 @@
 title: 'API integration tests for match-invite flow'
 type: 'feature'
 created: '2026-07-30'
-status: 'awaiting-operator'
+status: 'done'
 review_loop_iteration: 0
 followup_review_recommended: false
 baseline_revision: '129c26fff624b6fbf81c2026b558a5e0a2557bcd'
