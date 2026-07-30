@@ -14,7 +14,7 @@ FROM deps AS build
 COPY . .
 ENV SKIP_ENV_VALIDATION=true
 ENV NEXT_PUBLIC_APP_URL=https://paadel-app-dev.dioilham.com
-ENV NEXT_PUBLIC_API_URL=https://api.paadel-app-dev.dioilham.com
+ENV NEXT_PUBLIC_API_URL=https://api-paadel-app-dev.dioilham.com
 RUN bun run build
 
 FROM oven/bun:1.3-slim AS api
