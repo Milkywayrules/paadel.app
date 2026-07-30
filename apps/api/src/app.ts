@@ -70,13 +70,9 @@ export function createApp() {
     .get(
       "/health/r2",
       async ({ log }) => {
-        const result = await r2SmokeCheck();
-        if (!result.ok) {
-          log.warn("r2 smoke skipped", { reason: result.reason });
-          return { ok: false, reason: result.reason };
-        }
-        log.info("r2 smoke ok", { key: result.key });
-        return { key: result.key, ok: true };
+        const { key } = await r2SmokeCheck();
+        log.info("r2 smoke ok", { key });
+        return { key, ok: true };
       },
       {
         detail: {

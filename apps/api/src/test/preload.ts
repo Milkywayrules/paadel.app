@@ -24,7 +24,7 @@ try {
     }
   }
 } catch {
-  // Local integration tests require a `.env` with DB_URL.
+  // Integration tests: doppler secrets download → .env, or maintain a gitignored `.env`.
 }
 
 process.env.NODE_ENV = "test";

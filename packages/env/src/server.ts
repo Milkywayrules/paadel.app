@@ -1,5 +1,6 @@
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
+import { defaultR2PrefixForAppEnv } from "./features";
 
 const skipValidation =
   process.env.ENV_SKIP_VALIDATION === "true" || process.env.CI === "true";
@@ -11,8 +12,6 @@ export const serverEnv = createEnv({
   runtimeEnv: process.env,
   server: {
     API_CORS_ORIGIN: z.string().url(),
-    API_HOST: z.string().default("0.0.0.0"),
-    API_PORT: z.coerce.number().int().positive().default(3001),
     APP_ENV: appEnvSchema.default("dev"),
     BETTER_AUTH_SECRET: z.string().min(32),
     BETTER_AUTH_URL: z.string().url(),
@@ -21,31 +20,26 @@ export const serverEnv = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    OAUTH_GITHUB_CLIENT_ID: z.string().optional(),
-    OAUTH_GITHUB_CLIENT_SECRET: z.string().optional(),
-    OAUTH_GITHUB_ENABLED: z
-      .enum(["true", "false"])
-      .optional()
-      .transform((value) => value === "true"),
+    OAUTH_GITHUB_CLIENT_ID: z.string().min(1),
+    OAUTH_GITHUB_CLIENT_SECRET: z.string().min(1),
     OTEL_EXPORTER_OTLP_ENDPOINT: z.string().url().optional(),
-    R2_ACCESS_KEY_ID: z.string().optional(),
-    R2_ACCOUNT_ID: z.string().optional(),
-    R2_BUCKET_NAME: z.string().optional(),
-    R2_PREFIX: z.string().optional(),
-    R2_SECRET_ACCESS_KEY: z.string().optional(),
+    R2_ACCESS_KEY_ID: z.string().min(1),
+    R2_ACCOUNT_ID: z.string().min(1),
+    R2_BUCKET_NAME: z.string().min(1),
+    R2_PREFIX: z.string().min(1),
+    R2_SECRET_ACCESS_KEY: z.string().min(1),
     REDIS_URL: z.string().url(),
-    RESEND_API_KEY: z.string().optional(),
+    RESEND_API_KEY: z.string().min(1),
   },
   skipValidation,
 });
 
 if (
   !skipValidation &&
-  (serverEnv.APP_ENV === "prod" || serverEnv.APP_ENV === "stg") &&
-  !(serverEnv.OAUTH_GITHUB_CLIENT_ID && serverEnv.OAUTH_GITHUB_CLIENT_SECRET)
+  serverEnv.R2_PREFIX !== defaultR2PrefixForAppEnv(serverEnv.APP_ENV)
 ) {
   throw new Error(
-    "OAUTH_GITHUB_CLIENT_ID and OAUTH_GITHUB_CLIENT_SECRET are required when APP_ENV is prod or stg"
+    `R2_PREFIX must be ${defaultR2PrefixForAppEnv(serverEnv.APP_ENV)} when APP_ENV is ${serverEnv.APP_ENV}`
   );
 }
 

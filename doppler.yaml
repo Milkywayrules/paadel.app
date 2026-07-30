@@ -1,0 +1,5 @@
+# Doppler project binding — values are SoT in Doppler; this file is wiring only.
+# https://docs.doppler.com/docs/enclave-project-setup-file
+setup:
+  project: paadel-app
+  config: dev

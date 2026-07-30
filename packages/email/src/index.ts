@@ -10,23 +10,15 @@ export interface SendWelcomeEmailInput {
 
 let resendClient: Resend | null = null;
 
-function getResendClient(): Resend | null {
-  if (!serverEnv.RESEND_API_KEY) {
-    return null;
-  }
+function getResendClient(): Resend {
   resendClient ??= new Resend(serverEnv.RESEND_API_KEY);
   return resendClient;
 }
 
 export async function sendWelcomeEmail(
   input: SendWelcomeEmailInput
-): Promise<{ id: string } | { skipped: true; reason: string }> {
-  const client = getResendClient();
-  if (!client) {
-    return { reason: "RESEND_API_KEY not configured", skipped: true };
-  }
-
-  const result = await client.emails.send({
+): Promise<{ id: string }> {
+  const result = await getResendClient().emails.send({
     from: serverEnv.EMAIL_FROM,
     react: WelcomeEmail({
       appUrl: input.appUrl,
