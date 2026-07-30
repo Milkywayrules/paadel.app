@@ -1,10 +1,14 @@
+# Deploy stack (Coolify). Values come from Doppler — this file is wiring only.
+# `${VAR:?}` marks a variable as required: docker refuses to interpolate and
+# Coolify flags it in the UI. Never add a fallback message here — Coolify reads
+# `${VAR:?text}` as a prefilled default value.
 services:
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
       POSTGRES_USER: paadel
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in Doppler}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?}
       POSTGRES_DB: paadel
     volumes:
       - paadel-postgres-data:/var/lib/postgresql/data
@@ -35,7 +39,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      DB_URL: postgresql://paadel:${POSTGRES_PASSWORD}@postgres:5432/paadel
+      DB_URL: postgresql://paadel:${POSTGRES_PASSWORD:?}@postgres:5432/paadel
       ENV_SKIP_VALIDATION: "true"
     restart: "no"
 
@@ -52,20 +56,20 @@ services:
       migrate:
         condition: service_completed_successfully
     environment:
-      APP_ENV: ${APP_ENV:?Set APP_ENV in Doppler}
-      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?Set BETTER_AUTH_SECRET in Doppler}
-      BETTER_AUTH_URL: ${BETTER_AUTH_URL:?Set BETTER_AUTH_URL in Doppler}
-      API_CORS_ORIGIN: ${API_CORS_ORIGIN:?Set API_CORS_ORIGIN in Doppler}
-      DB_URL: postgresql://paadel:${POSTGRES_PASSWORD}@postgres:5432/paadel
-      EMAIL_FROM: ${EMAIL_FROM:?Set EMAIL_FROM in Doppler}
-      OAUTH_GITHUB_CLIENT_ID: ${OAUTH_GITHUB_CLIENT_ID:?Set OAUTH_GITHUB_CLIENT_ID in Doppler}
-      OAUTH_GITHUB_CLIENT_SECRET: ${OAUTH_GITHUB_CLIENT_SECRET:?Set OAUTH_GITHUB_CLIENT_SECRET in Doppler}
-      RESEND_API_KEY: ${RESEND_API_KEY:?Set RESEND_API_KEY in Doppler}
-      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:?Set R2_ACCOUNT_ID in Doppler}
-      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:?Set R2_ACCESS_KEY_ID in Doppler}
-      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:?Set R2_SECRET_ACCESS_KEY in Doppler}
-      R2_BUCKET_NAME: ${R2_BUCKET_NAME:?Set R2_BUCKET_NAME in Doppler}
-      R2_PREFIX: ${R2_PREFIX:?Set R2_PREFIX in Doppler}
+      APP_ENV: ${APP_ENV:?}
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?}
+      BETTER_AUTH_URL: ${BETTER_AUTH_URL:?}
+      API_CORS_ORIGIN: ${API_CORS_ORIGIN:?}
+      DB_URL: postgresql://paadel:${POSTGRES_PASSWORD:?}@postgres:5432/paadel
+      EMAIL_FROM: ${EMAIL_FROM:?}
+      OAUTH_GITHUB_CLIENT_ID: ${OAUTH_GITHUB_CLIENT_ID:?}
+      OAUTH_GITHUB_CLIENT_SECRET: ${OAUTH_GITHUB_CLIENT_SECRET:?}
+      RESEND_API_KEY: ${RESEND_API_KEY:?}
+      R2_ACCOUNT_ID: ${R2_ACCOUNT_ID:?}
+      R2_ACCESS_KEY_ID: ${R2_ACCESS_KEY_ID:?}
+      R2_SECRET_ACCESS_KEY: ${R2_SECRET_ACCESS_KEY:?}
+      R2_BUCKET_NAME: ${R2_BUCKET_NAME:?}
+      R2_PREFIX: ${R2_PREFIX:?}
       OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
       NODE_ENV: production
       REDIS_URL: redis://redis:6379
@@ -77,8 +81,8 @@ services:
       context: .
       target: web
       args:
-        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:?Set NEXT_PUBLIC_APP_URL in Doppler}
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:?Set NEXT_PUBLIC_API_URL in Doppler}
+        NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL:?}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:?}
     restart: unless-stopped
     depends_on:
       - api
